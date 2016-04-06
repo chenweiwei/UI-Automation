@@ -1,0 +1,10 @@
+*** Keywords ***
+登录测试
+    [Arguments]    ${url}    ${loginMenu}    ${userAccount}    ${userPwd}
+    打开浏览器    ${url}    ${loginMenu}
+    点击登录按钮
+    登录    ${userAccount}    ${userPwd}
+    进入题库
+    进入作答
+
+做题测试

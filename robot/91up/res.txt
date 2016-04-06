@@ -1,0 +1,28 @@
+*** Keywords ***
+打开浏览器
+    [Arguments]    ${url}    ${loginMenu}
+    Open Browser    ${url}    browser=chrome
+    Maximize Browser Window
+    Page Should Contain    ${loginMenu}
+
+点击登录按钮
+    Click Element    link=登录
+    sleep    5
+    Page Should Contain    欢迎登录
+
+登录
+    [Arguments]    ${userAccount}    ${userPwd}
+    Input Text    id=j_username    ${userAccount}
+    Input Text    id=j_pwd    ${userPwd}
+    Click Button    xpath=//button[@type='submit']
+    sleep    5
+    Page Should Not Contain    登录
+
+进入题库
+    Click Element    link=题库
+    Page Should Contain Element    //li[@class="active"]/a[ contains(text(),'题库')]    message="无法定位”
+    Click Element    //div[@class="course-list"]/a[ @class="course-item"][1]
+
+进入作答
+    Page Should Contain    介绍信息
+    Click Element    id=j_btn
